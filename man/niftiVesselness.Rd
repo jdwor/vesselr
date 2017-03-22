@@ -22,7 +22,7 @@ is Linux or Unix (i.e. macOS), and should run the code in parallel}
 A nifti volume of the Frangi vesselness measure.
 }
 \description{
-This function returns a vesselness image for a 3-dimensional NIfTI volume. This vesseless measure is based on the method described by Frangi (1998).
+This function returns a vesselness map for a 3-dimensional NIfTI volume. This vesseless measure is based on the method described by Frangi (1998).
 }
 \examples{
 \dontrun{

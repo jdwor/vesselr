@@ -1,5 +1,5 @@
 #' @title NIfTI Vesselness
-#' @description This function returns a vesselness image for a 3-dimensional NIfTI volume. This vesseless measure is based on the method described by Frangi (1998).
+#' @description This function returns a vesselness map for a 3-dimensional NIfTI volume. This vesseless measure is based on the method described by Frangi (1998).
 #' @param image an image of class \code{\link{nifti}}
 #' @param vein.color a string specifying whether veins will appear darker ("dark") or brighter ("bright") than their surroundings
 #' @param mask a mask of class \code{\link{nifti}},
