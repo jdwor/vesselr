@@ -9,13 +9,13 @@ niftiGradient(image, which = "all")
 \arguments{
 \item{image}{an image of class \code{\link{nifti}}}
 
-\item{which}{a string specifying the gradient direction that should be returned. Either "all" for a list of x, y, and z gradients, or "x", "y", or "z" for a single image with the given gradient.}
+\item{which}{a string specifying the gradient direction that should be returned; either "all" for a list of x, y, and z gradients, or "x", "y", or "z" for a single image with the given gradient}
 }
 \value{
-Either a list of three gradient images or a single gradient image.
+Either a list of three gradient volumes or a single gradient volume.
 }
 \description{
-This function returns the gradient images for a 3-dimensional NIfTI image.
+This function returns the gradient images for a 3-dimensional NIfTI volume.
 }
 \examples{
 \dontrun{

@@ -2,6 +2,7 @@
 
 export(niftiGradient)
 export(niftiHessian)
+export(niftiVesselness)
 importFrom(oro.nifti,is.nifti)
 importFrom(parallel,detectCores)
 importFrom(pbapply,pblapply)

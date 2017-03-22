@@ -6,6 +6,11 @@ Authors@R: person(given = "Jordan D.", family = "Dworkin",
   email = "jdwor@mail.med.upenn.edu", role = c("aut", "cre"))
 Maintainer: Jordan D. Dworkin <jdwor@mail.med.upenn.edu>
 Description: Simple functions with few required packages capable of providing gradient, hessian, and vesselness images from a given volume.
+Imports:  
+    oro.nifti,
+    parallel,
+    pbmcapply,
+    pbapply
 License: GPL-2
 Encoding: UTF-8
 LazyData: true

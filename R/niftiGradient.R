@@ -1,9 +1,9 @@
 #' @title NIfTI Gradient
-#' @description This function returns the gradient images for a 3-dimensional NIfTI image.
+#' @description This function returns the gradient images for a 3-dimensional NIfTI volume.
 #' @param image an image of class \code{\link{nifti}}
-#' @param which a string specifying the gradient direction that should be returned. Either "all" for a list of x, y, and z gradients, or "x", "y", or "z" for a single image with the given gradient.
+#' @param which a string specifying the gradient direction that should be returned; either "all" for a list of x, y, and z gradients, or "x", "y", or "z" for a single image with the given gradient
 #'
-#' @return Either a list of three gradient images or a single gradient image.
+#' @return Either a list of three gradient volumes or a single gradient volume.
 #' @examples \dontrun{
 #' library(neurobase)
 #' epi <- readnii('path/to/epi')

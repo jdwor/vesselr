@@ -17,10 +17,10 @@ Note that mask should be in the same space as the image volume}
 is Linux or Unix (i.e. macOS), and should run the code in parallel}
 }
 \value{
-A list of three eigenvalue images.
+A list of three eigenvalue volumes.
 }
 \description{
-This function returns the eigenvalues of the hessian matrices for a 3-dimensional NIfTI image.
+This function returns the eigenvalues of the hessian matrices for a 3-dimensional NIfTI volume.
 }
 \examples{
 \dontrun{

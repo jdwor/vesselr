@@ -1,12 +1,12 @@
 #' @title NIfTI Hessian
-#' @description This function returns the eigenvalues of the hessian matrices for a 3-dimensional NIfTI image.
+#' @description This function returns the eigenvalues of the hessian matrices for a 3-dimensional NIfTI volume.
 #' @param image an image of class \code{\link{nifti}}
 #' @param mask a mask of class \code{\link{nifti}},
 #' if \code{NULL} the hessian filter will be run for the full array.
 #' Note that mask should be in the same space as the image volume
 #' @param parallel is a logical value that indicates whether the user's computer
 #' is Linux or Unix (i.e. macOS), and should run the code in parallel
-#' @return A list of three eigenvalue images.
+#' @return A list of three eigenvalue volumes.
 #' @examples \dontrun{
 #' library(neurobase)
 #' epi <- readnii('path/to/epi')
@@ -16,7 +16,7 @@
 #' @importFrom pbmcapply pbmclapply
 #' @importFrom pbapply pblapply
 #' @importFrom parallel detectCores
-niftiHessian=function(image,mask=NULL,parallel=FALSE){
+niftiHessian=function(image, mask = NULL, parallel = FALSE){
   if(is.null(mask)){
     mask=image
     mask[image]=1
