@@ -62,8 +62,8 @@ niftiHessian=function(image, mask = NULL, parallel = FALSE){
 
   print("Calculating eigenvalues")
   if(parallel==TRUE){
-    result=matrix(unlist(pbmclapply(biglist,getevals,
-                                    mc.cores=detectCores())),ncol=3,byrow=T)
+    result=matrix(unlist(pbmclapply(biglist,getevals,mc.cores=2)),
+                  ncol=3,byrow=T)
   }else if(parallel==FALSE){
     result=matrix(unlist(pblapply(biglist,getevals)),ncol=3,byrow=T)
   }

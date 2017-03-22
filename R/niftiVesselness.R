@@ -5,21 +5,24 @@
 #' @param mask a mask of class \code{\link{nifti}},
 #' if \code{NULL} the vesselness filter will be run for the full array.
 #' Note that mask should be in the same space as the image volume
+#' @param parallel is a logical value that indicates whether the user's computer
+#' is Linux or Unix (i.e. macOS), and should run the code in parallel
 #' @return A nifti volume of the Frangi vesselness measure.
 #' @examples \dontrun{
 #' library(neurobase)
 #' epi <- readnii('path/to/epi')
 #' mask <- epi!=0
-#' hesseigs <- niftiHessian(image = epi, vein.color = "dark", mask = mask) }
+#' hesseigs <- niftiHessian(image = epi, vein.color = "dark",
+#'                          mask = mask, parallel = TRUE) }
 #' @export
 #' @references A.F. Frangi, W.J. Niessen, K.L. Vincken, M.A. Viergever (1998). Multiscale vessel enhancement filtering. In Medical Image Computing and Computer-Assisted Intervention - MICCAI'98, W.M. Wells, A. Colchester and S.L. Delp (Eds.), Lecture Notes in Computer Science, vol. 1496 - Springer Verlag, Berlin, Germany, pp. 130-137.
-niftiVesselness=function(image, vein.color = "dark", mask = NULL){
+niftiVesselness=function(image, vein.color = "dark", mask = NULL, parallel = FALSE){
   if(is.null(mask)){
     mask=image
     mask[mask==image]=1
   }
 
-  eigvals=niftiHessian(image,mask)
+  eigvals=niftiHessian(image,mask,parallel)
 
   print("Calculating vesselness measure")
   l1=eigvals$eigval1

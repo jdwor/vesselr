@@ -4,7 +4,7 @@
 \alias{niftiVesselness}
 \title{NIfTI Vesselness}
 \usage{
-niftiVesselness(image, vein.color = "dark", mask = NULL)
+niftiVesselness(image, vein.color = "dark", mask = NULL, parallel = FALSE)
 }
 \arguments{
 \item{image}{an image of class \code{\link{nifti}}}
@@ -14,6 +14,9 @@ niftiVesselness(image, vein.color = "dark", mask = NULL)
 \item{mask}{a mask of class \code{\link{nifti}},
 if \code{NULL} the vesselness filter will be run for the full array.
 Note that mask should be in the same space as the image volume}
+
+\item{parallel}{is a logical value that indicates whether the user's computer
+is Linux or Unix (i.e. macOS), and should run the code in parallel}
 }
 \value{
 A nifti volume of the Frangi vesselness measure.
@@ -26,7 +29,8 @@ This function returns a vesselness image for a 3-dimensional NIfTI volume. This 
 library(neurobase)
 epi <- readnii('path/to/epi')
 mask <- epi!=0
-hesseigs <- niftiHessian(image = epi, vein.color = "dark", mask = mask) }
+hesseigs <- niftiHessian(image = epi, vein.color = "dark",
+                         mask = mask, parallel = TRUE) }
 }
 \references{
 A.F. Frangi, W.J. Niessen, K.L. Vincken, M.A. Viergever (1998). Multiscale vessel enhancement filtering. In Medical Image Computing and Computer-Assisted Intervention - MICCAI'98, W.M. Wells, A. Colchester and S.L. Delp (Eds.), Lecture Notes in Computer Science, vol. 1496 - Springer Verlag, Berlin, Germany, pp. 130-137.
