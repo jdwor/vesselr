@@ -1,28 +1,28 @@
-#' @title NIfTI Vesselness
-#' @description This function returns a vesselness map for a 3-dimensional NIfTI volume. This vesseless measure is based on the method described by Frangi (1998).
-#' @param image an image of class \code{\link{nifti}}
+#' @title 3D Volume Vesselness
+#' @description This function returns a vesselness map for a 3D array or NIfTI volume. This vesseless measure is based on the method described by Frangi (1998).
+#' @param image a 3D array or image of class \code{\link{nifti}}
 #' @param vein.color a string specifying whether veins will appear darker ("dark") or brighter ("bright") than their surroundings
-#' @param mask a mask of class \code{\link{nifti}},
+#' @param mask an array or \code{\link{nifti}} mask of voxels for which vesselness will be calculated,
 #' if \code{NULL} the vesselness filter will be run for the full array.
 #' Note that mask should be in the same space as the image volume
 #' @param parallel is a logical value that indicates whether the user's computer
 #' is Linux or Unix (i.e. macOS), and should run the code in parallel
-#' @return A nifti volume of the Frangi vesselness measure.
+#' @return A 3D volume of the Frangi vesselness scores.
 #' @examples \dontrun{
 #' library(neurobase)
 #' epi <- readnii('path/to/epi')
 #' mask <- epi!=0
-#' hesseigs <- niftiHessian(image = epi, vein.color = "dark",
+#' veins <- vesselness3D(image = epi, vein.color = "dark",
 #'                          mask = mask, parallel = TRUE) }
 #' @export
 #' @references A.F. Frangi, W.J. Niessen, K.L. Vincken, M.A. Viergever (1998). Multiscale vessel enhancement filtering. In Medical Image Computing and Computer-Assisted Intervention - MICCAI'98, W.M. Wells, A. Colchester and S.L. Delp (Eds.), Lecture Notes in Computer Science, vol. 1496 - Springer Verlag, Berlin, Germany, pp. 130-137.
-niftiVesselness=function(image, vein.color = "dark", mask = NULL, parallel = FALSE){
+vesselness3D=function(image, vein.color = "dark", mask = NULL, parallel = FALSE){
   if(is.null(mask)){
     mask=image
     mask[mask==image]=1
   }
 
-  eigvals=niftiHessian(image,mask,parallel)
+  eigvals=hessian3D(image,mask,parallel)
 
   print("Calculating vesselness measure")
   l1=eigvals$eigval1

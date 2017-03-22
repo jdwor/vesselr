@@ -1,7 +1,7 @@
-#' @title NIfTI Hessian
-#' @description This function returns the eigenvalues of the hessian matrices for a 3-dimensional NIfTI volume.
-#' @param image an image of class \code{\link{nifti}}
-#' @param mask a mask of class \code{\link{nifti}},
+#' @title 3D Volume Hessian
+#' @description This function returns the eigenvalues of the hessian matrices for a 3D array or NIfTI volume.
+#' @param image a 3D array or image of class \code{\link{nifti}}
+#' @param mask an array or \code{\link{nifti}} mask of voxels for which the hessian will be calculated,
 #' if \code{NULL} the hessian filter will be run for the full array.
 #' Note that mask should be in the same space as the image volume
 #' @param parallel is a logical value that indicates whether the user's computer
@@ -11,31 +11,31 @@
 #' library(neurobase)
 #' epi <- readnii('path/to/epi')
 #' mask <- epi!=0
-#' hesseigs <- niftiHessian(image = epi, mask = mask) }
+#' hesseigs <- hessian3D(image = epi, mask = mask) }
 #' @export
 #' @importFrom pbmcapply pbmclapply
 #' @importFrom pbapply pblapply
 #' @importFrom parallel detectCores
-niftiHessian=function(image, mask = NULL, parallel = FALSE){
+hessian3D=function(image, mask = NULL, parallel = FALSE){
   if(is.null(mask)){
     mask=image
     mask[image]=1
   }
 
   print("Getting derivatives")
-  grads=niftiGradient(image,which="all")
+  grads=gradient3D(image,which="all")
   gx=grads$Dx
   gy=grads$Dy
   gz=grads$Dz
-  gradsx=niftiGradient(gx,which="all")
+  gradsx=gradient3D(gx,which="all")
   gxx=gradsx$Dx
   gxy=gradsx$Dy
   gxz=gradsx$Dz
-  gradsy=niftiGradient(gy,which="all")
+  gradsy=gradient3D(gy,which="all")
   gyx=gradsy$Dx
   gyy=gradsy$Dy
   gyz=gradsy$Dz
-  gradsz=niftiGradient(gz,which="all")
+  gradsz=gradient3D(gz,which="all")
   gzx=gradsz$Dx
   gzy=gradsz$Dy
   gzz=gradsz$Dz
