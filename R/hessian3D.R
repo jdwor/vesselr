@@ -27,20 +27,25 @@ hessian3D=function(image, mask = NULL, parallel = FALSE){
   gx=grads$Dx
   gy=grads$Dy
   gz=grads$Dz
+  rm(grads)
+
   gradsx=gradient3D(gx,which="all")
   gxx=gradsx$Dx
   gxy=gradsx$Dy
   gxz=gradsx$Dz
+  rm(gx,gradsx)
+
   gradsy=gradient3D(gy,which="all")
   gyx=gradsy$Dx
   gyy=gradsy$Dy
   gyz=gradsy$Dz
+  rm(gy,gradsy)
+
   gradsz=gradient3D(gz,which="all")
   gzx=gradsz$Dx
   gzy=gradsz$Dy
   gzz=gradsz$Dz
-
-  rm(grads,gradsx,gradsy,gradsz,gx,gy,gz)
+  rm(gz,gradsz)
 
   print("Creating hessian matrices")
   bigmat=cbind(as.vector(gxx[mask==1]),as.vector(gxy[mask==1]),as.vector(gxz[mask==1]),
