@@ -1,6 +1,6 @@
 Package: vesselr
 Type: Package
-Title: Gradient and Vessel-Related Tools for Arrays and NIfTI Images
+Title: Gradient and Vesselness Tools for Arrays and NIfTI Images
 Version: 0.1.0
 Authors@R: person(given = "Jordan D.", family = "Dworkin",  
   email = "jdwor@mail.med.upenn.edu", role = c("aut", "cre"))
