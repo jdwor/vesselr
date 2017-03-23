@@ -4,6 +4,7 @@
 #' @param mask an array or \code{\link{nifti}} mask of voxels for which the hessian will be calculated,
 #' if \code{NULL} the hessian filter will be run for the full array.
 #' Note that mask should be in the same space as the image volume
+#' @param radius an integer specifying radius of the neighborhood for which the hessian should be calculated
 #' @param parallel is a logical value that indicates whether the user's computer
 #' is Linux or Unix (i.e. macOS), and should run the code in parallel
 #' @return A list of three eigenvalue volumes.
@@ -16,32 +17,32 @@
 #' @importFrom pbmcapply pbmclapply
 #' @importFrom pbapply pblapply
 #' @importFrom parallel detectCores
-hessian3D=function(image, mask = NULL, parallel = FALSE){
+hessian3D=function(image, mask = NULL, radius = 1, parallel = FALSE){
   if(is.null(mask)){
     mask=image
     mask[mask==image]=1
   }
 
   print("Getting derivatives")
-  grads=gradient3D(image,which="all")
+  grads=gradient3D(image,which="all",radius=radius)
   gx=grads$Dx
   gy=grads$Dy
   gz=grads$Dz
   rm(grads)
 
-  gradsx=gradient3D(gx,which="all")
+  gradsx=gradient3D(gx,which="all",radius=radius)
   gxx=gradsx$Dx
   gxy=gradsx$Dy
   gxz=gradsx$Dz
   rm(gx,gradsx)
 
-  gradsy=gradient3D(gy,which="all")
+  gradsy=gradient3D(gy,which="all",radius=radius)
   gyx=gradsy$Dx
   gyy=gradsy$Dy
   gyz=gradsy$Dz
   rm(gy,gradsy)
 
-  gradsz=gradient3D(gz,which="all")
+  gradsz=gradient3D(gz,which="all",radius=radius)
   gzx=gradsz$Dx
   gzy=gradsz$Dy
   gzz=gradsz$Dz

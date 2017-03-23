@@ -4,7 +4,7 @@
 \alias{hessian3D}
 \title{3D Volume Hessian}
 \usage{
-hessian3D(image, mask = NULL, parallel = FALSE)
+hessian3D(image, mask = NULL, radius = 1, parallel = FALSE)
 }
 \arguments{
 \item{image}{a 3D array or image of class \code{\link{nifti}}}
@@ -12,6 +12,8 @@ hessian3D(image, mask = NULL, parallel = FALSE)
 \item{mask}{an array or \code{\link{nifti}} mask of voxels for which the hessian will be calculated,
 if \code{NULL} the hessian filter will be run for the full array.
 Note that mask should be in the same space as the image volume}
+
+\item{radius}{an integer specifying radius of the neighborhood for which the hessian should be calculated}
 
 \item{parallel}{is a logical value that indicates whether the user's computer
 is Linux or Unix (i.e. macOS), and should run the code in parallel}
