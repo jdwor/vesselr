@@ -26,7 +26,7 @@ blobness3D=function(image, mask = NULL, radius = 5, color = "dark", parallel = F
 
   eigvals=hessian3D(image,mask,radius,parallel)
 
-  print("Calculating vesselness measure")
+  print("Calculating blobness measure")
   l1=eigvals$eigval1
   l2=eigvals$eigval2
   l3=eigvals$eigval3
