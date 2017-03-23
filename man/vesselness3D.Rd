@@ -14,7 +14,7 @@ vesselness3D(image, mask = NULL, radius = 1, color = "dark",
 if \code{NULL} the vesselness filter will be run for the full array.
 Note that mask should be in the same space as the image volume}
 
-\item{radius}{an integer specifying radius of the neighborhood for which the vesselness should be calculated.
+\item{radius}{an integer specifying radius of the neighborhood (in voxels) for which the vesselness should be calculated.
 Note that this value essentially serves as the scale of the vessel objects}
 
 \item{color}{a string specifying whether vessels will appear darker ("dark") or brighter ("bright") than their surroundings}
@@ -33,7 +33,7 @@ This function returns a vesselness map for a 3D array or NIfTI volume. This vess
 library(neurobase)
 epi <- readnii('path/to/epi')
 mask <- epi!=0
-veins <- vesselness3D(image = epi, mask = mask,
+veins <- vesselness3D(image = epi, mask = mask, radius = 1,
                       color = "dark", parallel = TRUE) }
 }
 \references{

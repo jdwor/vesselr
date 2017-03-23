@@ -15,7 +15,7 @@ Note that mask should be in the same space as the image volume}
 
 \item{which}{a string specifying the gradient direction that should be returned; either "all" for a list of x, y, and z gradient volumes, or "x", "y", or "z" for a single volume with the given gradient}
 
-\item{radius}{an integer specifying radius of the neighborhood for which the gradient should be calculated}
+\item{radius}{an integer specifying radius of the neighborhood (in voxels) for which the gradient should be calculated}
 }
 \value{
 Either a list of three gradient volumes or a single gradient volume, in either array or NIfTI format based on what was input.

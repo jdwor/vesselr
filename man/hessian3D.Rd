@@ -13,7 +13,7 @@ hessian3D(image, mask = NULL, radius = 1, parallel = FALSE)
 if \code{NULL} the hessian filter will be run for the full array.
 Note that mask should be in the same space as the image volume}
 
-\item{radius}{an integer specifying radius of the neighborhood for which the hessian should be calculated}
+\item{radius}{an integer specifying radius of the neighborhood (in voxels) for which the hessian should be calculated}
 
 \item{parallel}{is a logical value that indicates whether the user's computer
 is Linux or Unix (i.e. macOS), and should run the code in parallel}
