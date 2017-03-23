@@ -12,11 +12,11 @@
 #' library(neurobase)
 #' epi <- readnii('path/to/epi')
 #' mask <- epi!=0
-#' veins <- vesselness3D(image = epi, vein.color = "dark",
-#'                          mask = mask, parallel = TRUE) }
+#' veins <- vesselness3D(image = epi, mask = mask,
+#'                       vein.color = "dark", parallel = TRUE) }
 #' @export
 #' @references A.F. Frangi, W.J. Niessen, K.L. Vincken, M.A. Viergever (1998). Multiscale vessel enhancement filtering. In Medical Image Computing and Computer-Assisted Intervention - MICCAI'98, W.M. Wells, A. Colchester and S.L. Delp (Eds.), Lecture Notes in Computer Science, vol. 1496 - Springer Verlag, Berlin, Germany, pp. 130-137.
-vesselness3D=function(image, vein.color = "dark", mask = NULL, parallel = FALSE){
+vesselness3D=function(image, mask = NULL, vein.color = "dark", parallel = FALSE){
   if(is.null(mask)){
     mask=image
     mask[mask==image]=1
