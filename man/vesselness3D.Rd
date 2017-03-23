@@ -4,7 +4,7 @@
 \alias{vesselness3D}
 \title{3D Volume Vesselness}
 \usage{
-vesselness3D(image, mask = NULL, vein.color = "dark", parallel = FALSE)
+vesselness3D(image, mask = NULL, color = "dark", parallel = FALSE)
 }
 \arguments{
 \item{image}{a 3D array or image of class \code{\link{nifti}}}
@@ -13,7 +13,7 @@ vesselness3D(image, mask = NULL, vein.color = "dark", parallel = FALSE)
 if \code{NULL} the vesselness filter will be run for the full array.
 Note that mask should be in the same space as the image volume}
 
-\item{vein.color}{a string specifying whether veins will appear darker ("dark") or brighter ("bright") than their surroundings}
+\item{color}{a string specifying whether vessels will appear darker ("dark") or brighter ("bright") than their surroundings}
 
 \item{parallel}{is a logical value that indicates whether the user's computer
 is Linux or Unix (i.e. macOS), and should run the code in parallel}
@@ -30,7 +30,7 @@ library(neurobase)
 epi <- readnii('path/to/epi')
 mask <- epi!=0
 veins <- vesselness3D(image = epi, mask = mask,
-                      vein.color = "dark", parallel = TRUE) }
+                      color = "dark", parallel = TRUE) }
 }
 \references{
 A.F. Frangi, W.J. Niessen, K.L. Vincken, M.A. Viergever (1998). Multiscale vessel enhancement filtering. In Medical Image Computing and Computer-Assisted Intervention - MICCAI'98, W.M. Wells, A. Colchester and S.L. Delp (Eds.), Lecture Notes in Computer Science, vol. 1496 - Springer Verlag, Berlin, Germany, pp. 130-137.
