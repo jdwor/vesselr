@@ -27,18 +27,18 @@ gradient3D=function(image, mask = NULL, which = "all", radius = 1){
 
       dy=image
       dy@.Data[,1:radius,]=0
-      dy@.Data[,dim(image)[1]-radius+1,]=0
-      dy@.Data[,((1+radius):(dim(image)[1]-radius)),]=
-        (image@.Data[,((1+2*radius):dim(image)[1]),]-
-           image@.Data[,(1:(dim(image)[1]-2*radius)),])/(2*radius)
+      dy@.Data[,dim(image)[2]-radius+1,]=0
+      dy@.Data[,((1+radius):(dim(image)[2]-radius)),]=
+        (image@.Data[,((1+2*radius):dim(image)[2]),]-
+           image@.Data[,(1:(dim(image)[2]-2*radius)),])/(2*radius)
       dy@.Data[mask@.Data==0]<-0
 
       dz=image
       dz@.Data[,,1:radius]=0
-      dz@.Data[,,dim(image)[1]-radius+1]=0
-      dz@.Data[,,((1+radius):(dim(image)[1]-radius))]=
-        (image@.Data[,,((1+2*radius):dim(image)[1])]-
-           image@.Data[,,(1:(dim(image)[1]-2*radius))])/(2*radius)
+      dz@.Data[,,dim(image)[3]-radius+1]=0
+      dz@.Data[,,((1+radius):(dim(image)[3]-radius))]=
+        (image@.Data[,,((1+2*radius):dim(image)[3])]-
+           image@.Data[,,(1:(dim(image)[3]-2*radius))])/(2*radius)
       dz@.Data[mask@.Data==0]<-0
 
       return(list(Dx=dx,Dy=dy,Dz=dz))
@@ -54,19 +54,19 @@ gradient3D=function(image, mask = NULL, which = "all", radius = 1){
     }else if(which=="y"){
       dy=image
       dy@.Data[,1:radius,]=0
-      dy@.Data[,dim(image)[1]-radius+1,]=0
-      dy@.Data[,((1+radius):(dim(image)[1]-radius)),]=
-        (image@.Data[,((1+2*radius):dim(image)[1]),]-
-           image@.Data[,(1:(dim(image)[1]-2*radius)),])/(2*radius)
+      dy@.Data[,dim(image)[2]-radius+1,]=0
+      dy@.Data[,((1+radius):(dim(image)[2]-radius)),]=
+        (image@.Data[,((1+2*radius):dim(image)[2]),]-
+           image@.Data[,(1:(dim(image)[2]-2*radius)),])/(2*radius)
       dy@.Data[mask@.Data==0]<-0
       return(dy)
     }else if(which=="z"){
       dz=image
       dz@.Data[,,1:radius]=0
-      dz@.Data[,,dim(image)[1]-radius+1]=0
-      dz@.Data[,,((1+radius):(dim(image)[1]-radius))]=
-        (image@.Data[,,((1+2*radius):dim(image)[1])]-
-           image@.Data[,,(1:(dim(image)[1]-2*radius))])/(2*radius)
+      dz@.Data[,,dim(image)[3]-radius+1]=0
+      dz@.Data[,,((1+radius):(dim(image)[3]-radius))]=
+        (image@.Data[,,((1+2*radius):dim(image)[3])]-
+           image@.Data[,,(1:(dim(image)[3]-2*radius))])/(2*radius)
       dz@.Data[mask@.Data==0]<-0
       return(dz)
     }
