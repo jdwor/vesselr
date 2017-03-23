@@ -19,7 +19,7 @@
 hessian3D=function(image, mask = NULL, parallel = FALSE){
   if(is.null(mask)){
     mask=image
-    mask[image]=1
+    mask[mask==image]=1
   }
 
   print("Getting derivatives")
