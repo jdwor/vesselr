@@ -4,7 +4,7 @@
 #' @param mask an array or \code{\link{nifti}} mask of voxels for which the hessian will be calculated,
 #' if \code{NULL} the hessian filter will be run for the full array.
 #' Note that mask should be in the same space as the image volume
-#' @param radius an integer specifying radius of the neighborhood for which the hessian should be calculated
+#' @param radius an integer specifying radius of the neighborhood (in voxels) for which the hessian should be calculated
 #' @param parallel is a logical value that indicates whether the user's computer
 #' is Linux or Unix (i.e. macOS), and should run the code in parallel
 #' @return A list of three eigenvalue volumes.
