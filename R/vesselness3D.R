@@ -2,14 +2,14 @@
 #' @description This function returns a vesselness map for a 3D array or NIfTI volume. This vesseless measure is based on the method described by Frangi (1998).
 #' @param image a 3D array or image of class \code{\link{nifti}}
 #' @param mask an array or \code{\link{nifti}} mask of voxels for which vesselness will be calculated,
-#' if \code{NULL} the vesselness filter will be run for the full array.
+#' with more selective masking improving speed significantly.
 #' Note that mask should be in the same space as the image volume
 #' @param radius an integer specifying radius of the neighborhood (in voxels) for which the vesselness should be calculated.
 #' Note that this value essentially serves as the scale of the vessel objects
 #' @param color a string specifying whether vessels will appear darker ("dark") or brighter ("bright") than their surroundings
 #' @param parallel is a logical value that indicates whether the user's computer
 #' is Linux or Unix (i.e. macOS), and should run the code in parallel
-#' 
+#'
 #' @return A 3D volume of the Frangi vesselness scores.
 #' @examples \dontrun{
 #' library(neurobase)
@@ -19,11 +19,7 @@
 #'                       color = "dark", parallel = TRUE) }
 #' @export
 #' @references A.F. Frangi, W.J. Niessen, K.L. Vincken, M.A. Viergever (1998). Multiscale vessel enhancement filtering. In Medical Image Computing and Computer-Assisted Intervention - MICCAI'98, W.M. Wells, A. Colchester and S.L. Delp (Eds.), Lecture Notes in Computer Science, vol. 1496 - Springer Verlag, Berlin, Germany, pp. 130-137.
-vesselness3D=function(image, mask = NULL, radius = 1, color = "dark", parallel = FALSE){
-  if(is.null(mask)){
-    mask=image
-    mask[mask==image]=1
-  }
+vesselness3D=function(image, mask, radius = 1, color = "dark", parallel = FALSE){
 
   eigvals=hessian3D(image,mask,radius,parallel)
 

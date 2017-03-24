@@ -4,14 +4,13 @@
 \alias{blobness3D}
 \title{3D Volume Blobness}
 \usage{
-blobness3D(image, mask = NULL, radius = 5, color = "dark",
-  parallel = FALSE)
+blobness3D(image, mask, radius = 5, color = "dark", parallel = FALSE)
 }
 \arguments{
 \item{image}{a 3D array or image of class \code{\link{nifti}}}
 
-\item{mask}{an array or \code{\link{nifti}} mask of voxels for which blobness will be calculated,
-if \code{NULL} the blobness filter will be run for the full array.
+\item{mask}{an array or \code{\link{nifti}} mask of voxels for which vesselness will be calculated,
+with more selective masking improving speed significantly.
 Note that mask should be in the same space as the image volume}
 
 \item{radius}{an integer specifying radius of the neighborhood (in voxels) for which the blobness should be calculated.

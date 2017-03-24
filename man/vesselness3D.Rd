@@ -4,14 +4,13 @@
 \alias{vesselness3D}
 \title{3D Volume Vesselness}
 \usage{
-vesselness3D(image, mask = NULL, radius = 1, color = "dark",
-  parallel = FALSE)
+vesselness3D(image, mask, radius = 1, color = "dark", parallel = FALSE)
 }
 \arguments{
 \item{image}{a 3D array or image of class \code{\link{nifti}}}
 
 \item{mask}{an array or \code{\link{nifti}} mask of voxels for which vesselness will be calculated,
-if \code{NULL} the vesselness filter will be run for the full array.
+with more selective masking improving speed significantly.
 Note that mask should be in the same space as the image volume}
 
 \item{radius}{an integer specifying radius of the neighborhood (in voxels) for which the vesselness should be calculated.

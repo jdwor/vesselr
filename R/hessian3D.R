@@ -1,8 +1,8 @@
 #' @title 3D Volume Hessian
 #' @description This function returns the eigenvalues of the hessian matrices for a 3D array or NIfTI volume.
 #' @param image a 3D array or image of class \code{\link{nifti}}
-#' @param mask an array or \code{\link{nifti}} mask of voxels for which the hessian will be calculated,
-#' if \code{NULL} the hessian filter will be run for the full array.
+#' @param mask an array or \code{\link{nifti}} mask of voxels for which vesselness will be calculated,
+#' with more selective masking improving speed significantly.
 #' Note that mask should be in the same space as the image volume
 #' @param radius an integer specifying radius of the neighborhood (in voxels) for which the hessian should be calculated
 #' @param parallel is a logical value that indicates whether the user's computer
@@ -17,11 +17,7 @@
 #' @importFrom pbmcapply pbmclapply
 #' @importFrom pbapply pblapply
 #' @importFrom parallel detectCores
-hessian3D=function(image, mask = NULL, radius = 1, parallel = FALSE){
-  if(is.null(mask)){
-    mask=image
-    mask[mask==image]=1
-  }
+hessian3D=function(image, mask, radius = 1, parallel = FALSE){
 
   print("Getting derivatives")
   grads=gradient3D(image,which="all",radius=radius)

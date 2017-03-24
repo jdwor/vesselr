@@ -4,13 +4,13 @@
 \alias{hessian3D}
 \title{3D Volume Hessian}
 \usage{
-hessian3D(image, mask = NULL, radius = 1, parallel = FALSE)
+hessian3D(image, mask, radius = 1, parallel = FALSE)
 }
 \arguments{
 \item{image}{a 3D array or image of class \code{\link{nifti}}}
 
-\item{mask}{an array or \code{\link{nifti}} mask of voxels for which the hessian will be calculated,
-if \code{NULL} the hessian filter will be run for the full array.
+\item{mask}{an array or \code{\link{nifti}} mask of voxels for which vesselness will be calculated,
+with more selective masking improving speed significantly.
 Note that mask should be in the same space as the image volume}
 
 \item{radius}{an integer specifying radius of the neighborhood (in voxels) for which the hessian should be calculated}
