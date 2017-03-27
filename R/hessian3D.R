@@ -20,25 +20,25 @@
 hessian3D=function(image, mask, radius = 1, parallel = FALSE){
 
   print("Getting derivatives")
-  grads=gradient3D(image,which="all",radius=radius)
+  grads=gradient3D(image,mask,which="all",radius=radius)
   gx=grads$Dx
   gy=grads$Dy
   gz=grads$Dz
   rm(grads)
 
-  gradsx=gradient3D(gx,which="all",radius=radius)
+  gradsx=gradient3D(gx,mask,which="all",radius=radius)
   gxx=gradsx$Dx
   gxy=gradsx$Dy
   gxz=gradsx$Dz
   rm(gx,gradsx)
 
-  gradsy=gradient3D(gy,which="all",radius=radius)
+  gradsy=gradient3D(gy,mask,which="all",radius=radius)
   gyx=gradsy$Dx
   gyy=gradsy$Dy
   gyz=gradsy$Dz
   rm(gy,gradsy)
 
-  gradsz=gradient3D(gz,which="all",radius=radius)
+  gradsz=gradient3D(gz,mask,which="all",radius=radius)
   gzx=gradsz$Dx
   gzy=gradsz$Dy
   gzz=gradsz$Dz
