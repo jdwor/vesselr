@@ -1,11 +1,11 @@
 Package: vesselr
 Type: Package
 Title: Gradient and Vesselness Tools for Arrays and NIfTI Images
-Version: 0.1.0
+Version: 0.2
 Authors@R: person(given = "Jordan D.", family = "Dworkin",  
   email = "jdwor@mail.med.upenn.edu", role = c("aut", "cre"))
 Maintainer: Jordan D. Dworkin <jdwor@mail.med.upenn.edu>
-Description: Simple functions capable of providing gradient, hessian, and vesselness for a given 3-dimensional volume.
+Description: Simple functions for calculating the image gradient, image hessian, volume ratio filter, and Frangi vesselness filter of 3-dimensional volumes.
 Imports:  
     oro.nifti,
     parallel,
