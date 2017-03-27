@@ -14,7 +14,7 @@
 #' gradients <- gradient3D(image = epi, which = "all") }
 #' @export
 #' @importFrom oro.nifti is.nifti
-gradient3D=function(image, mask = NULL, which = "all", radius = 1){
+gradient3D=function(image, mask, which = "all", radius = 1){
   if(radius>=min(dim(image))){stop("Radius larger than smallest image dimension")}
   if(is.nifti(image)){
     if(which=="all"){
