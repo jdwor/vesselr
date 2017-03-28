@@ -4,7 +4,7 @@
 \alias{gradient3D}
 \title{3D Volume Gradient}
 \usage{
-gradient3D(image, mask, which = "all", radius = 1)
+gradient3D(image, mask = NULL, which = "all", radius = 1)
 }
 \arguments{
 \item{image}{a 3D array or image of class \code{\link{nifti}}}
