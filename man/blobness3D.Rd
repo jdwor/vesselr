@@ -21,6 +21,9 @@ Note that this value essentially serves as the scale of the blob objects}
 
 \item{parallel}{is a logical value that indicates whether the user's computer
 is Linux or Unix (i.e. macOS), and should run the code in parallel}
+
+\item{cores}{if parallel = TRUE, cores is an integer value that indicates how many cores
+the function should be run on}
 }
 \value{
 A 3D volume of the volume ratio blobness scores.

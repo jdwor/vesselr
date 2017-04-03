@@ -9,6 +9,8 @@
 #' @param color a string specifying whether vessels will appear darker ("dark") or brighter ("bright") than their surroundings
 #' @param parallel is a logical value that indicates whether the user's computer
 #' is Linux or Unix (i.e. macOS), and should run the code in parallel
+#' @param cores if parallel = TRUE, cores is an integer value that indicates how many cores
+#' the function should be run on
 #'
 #' @return A 3D volume of the Frangi vesselness scores.
 #' @examples \dontrun{

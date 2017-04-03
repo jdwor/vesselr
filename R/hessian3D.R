@@ -7,7 +7,9 @@
 #' @param radius an integer specifying radius of the neighborhood (in voxels) for which the hessian should be calculated
 #' @param parallel is a logical value that indicates whether the user's computer
 #' is Linux or Unix (i.e. macOS), and should run the code in parallel
-#' @param cores if parallel = TRUE, cores is an integer value that indicates how many cores the function should be run on
+#' @param cores if parallel = TRUE, cores is an integer value that indicates how many cores
+#' the function should be run on
+#'
 #' @return A list of three eigenvalue volumes.
 #' @examples \dontrun{
 #' library(neurobase)
