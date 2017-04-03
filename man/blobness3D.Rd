@@ -4,7 +4,8 @@
 \alias{blobness3D}
 \title{3D Volume Blobness}
 \usage{
-blobness3D(image, mask, radius = 5, color = "dark", parallel = FALSE)
+blobness3D(image, mask, radius = 5, color = "dark", parallel = FALSE,
+  cores = 2)
 }
 \arguments{
 \item{image}{a 3D array or image of class \code{\link{nifti}}}
@@ -33,7 +34,7 @@ library(neurobase)
 flair <- readnii('path/to/epi')
 mask <- flair!=0
 brightspots <- blobness3D(image = flair, mask = mask, radius = 5,
-                      color = "bright", parallel = TRUE) }
+                      color = "bright", parallel = TRUE, cores = 4) }
 }
 \references{
 C. Pierpaoli, P.J. Basser (1996). Toward a Quantitative Assessment of Diffusion Anisotropy. Magnetic Resonance in Medicine. 36, pp. 893-906.

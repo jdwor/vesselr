@@ -15,12 +15,12 @@
 #' flair <- readnii('path/to/epi')
 #' mask <- flair!=0
 #' brightspots <- blobness3D(image = flair, mask = mask, radius = 5,
-#'                       color = "bright", parallel = TRUE) }
+#'                       color = "bright", parallel = TRUE, cores = 4) }
 #' @export
 #' @references C. Pierpaoli, P.J. Basser (1996). Toward a Quantitative Assessment of Diffusion Anisotropy. Magnetic Resonance in Medicine. 36, pp. 893-906.
-blobness3D=function(image, mask, radius = 5, color = "dark", parallel = FALSE){
+blobness3D=function(image, mask, radius = 5, color = "dark", parallel = FALSE, cores = 2){
 
-  eigvals=hessian3D(image,mask,radius,parallel)
+  eigvals=hessian3D(image,mask,radius,parallel,cores)
 
   print("Calculating blobness measure")
   l1=eigvals$eigval1

@@ -4,7 +4,7 @@
 \alias{hessian3D}
 \title{3D Volume Hessian}
 \usage{
-hessian3D(image, mask, radius = 1, parallel = FALSE)
+hessian3D(image, mask, radius = 1, parallel = FALSE, cores = 2)
 }
 \arguments{
 \item{image}{a 3D array or image of class \code{\link{nifti}}}
@@ -17,6 +17,8 @@ Note that mask should be in the same space as the image volume}
 
 \item{parallel}{is a logical value that indicates whether the user's computer
 is Linux or Unix (i.e. macOS), and should run the code in parallel}
+
+\item{cores}{if parallel = TRUE, cores is an integer value that indicates how many cores the function should be run on}
 }
 \value{
 A list of three eigenvalue volumes.

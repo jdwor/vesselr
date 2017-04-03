@@ -7,6 +7,7 @@
 #' @param radius an integer specifying radius of the neighborhood (in voxels) for which the hessian should be calculated
 #' @param parallel is a logical value that indicates whether the user's computer
 #' is Linux or Unix (i.e. macOS), and should run the code in parallel
+#' @param cores if parallel = TRUE, cores is an integer value that indicates how many cores the function should be run on
 #' @return A list of three eigenvalue volumes.
 #' @examples \dontrun{
 #' library(neurobase)
@@ -17,7 +18,7 @@
 #' @importFrom pbmcapply pbmclapply
 #' @importFrom pbapply pblapply
 #' @importFrom parallel detectCores
-hessian3D=function(image, mask, radius = 1, parallel = FALSE){
+hessian3D=function(image, mask, radius = 1, parallel = FALSE, cores = 2){
 
   print("Getting derivatives")
   grads=gradient3D(image,which="all",radius=radius)
@@ -64,7 +65,7 @@ hessian3D=function(image, mask, radius = 1, parallel = FALSE){
 
   print("Calculating eigenvalues")
   if(parallel==TRUE){
-    result=matrix(unlist(pbmclapply(biglist,getevals,mc.cores=2)),
+    result=matrix(unlist(pbmclapply(biglist,getevals,mc.cores=cores)),
                   ncol=3,byrow=T)
   }else if(parallel==FALSE){
     result=matrix(unlist(pblapply(biglist,getevals)),ncol=3,byrow=T)

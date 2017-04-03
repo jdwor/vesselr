@@ -4,7 +4,8 @@
 \alias{vesselness3D}
 \title{3D Volume Vesselness}
 \usage{
-vesselness3D(image, mask, radius = 1, color = "dark", parallel = FALSE)
+vesselness3D(image, mask, radius = 1, color = "dark", parallel = FALSE,
+  cores = 2)
 }
 \arguments{
 \item{image}{a 3D array or image of class \code{\link{nifti}}}
@@ -33,7 +34,7 @@ library(neurobase)
 epi <- readnii('path/to/epi')
 mask <- epi!=0
 veins <- vesselness3D(image = epi, mask = mask, radius = 1,
-                      color = "dark", parallel = TRUE) }
+                      color = "dark", parallel = TRUE, cores = 4) }
 }
 \references{
 A.F. Frangi, W.J. Niessen, K.L. Vincken, M.A. Viergever (1998). Multiscale vessel enhancement filtering. In Medical Image Computing and Computer-Assisted Intervention - MICCAI'98, W.M. Wells, A. Colchester and S.L. Delp (Eds.), Lecture Notes in Computer Science, vol. 1496 - Springer Verlag, Berlin, Germany, pp. 130-137.
